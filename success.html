@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+```
+<meta charset="UTF-8">
+
+<meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+<title>Order Confirmed</title>
+
+<link rel="stylesheet"
+    href="css/style.css">
+
+<style>
+
+    .success-page {
+
+        min-height: 100vh;
+        padding: 40px 20px;
+        background: #f5f1ed;
+
+    }
+
+
+    .success-box {
+
+        max-width: 750px;
+        margin: auto;
+        background: white;
+        padding: 35px;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        text-align: center;
+
+    }
+
+
+    .success-title {
+
+        color: brown;
+        margin-bottom: 30px;
+
+    }
+
+
+    .success-order-details {
+
+        text-align: left;
+        background: #fafafa;
+        padding: 25px;
+        border-radius: 10px;
+        margin-bottom: 25px;
+
+    }
+
+
+    .success-order-details h3 {
+
+        color: brown;
+
+    }
+
+
+    .success-item {
+
+        padding: 12px;
+        margin-bottom: 10px;
+        background: white;
+        border-radius: 8px;
+        border: 1px solid #eee;
+
+    }
+
+
+    .success-total {
+
+        font-size: 22px;
+        font-weight: bold;
+        color: brown;
+
+    }
+
+
+    .success-status {
+
+        padding: 12px;
+        background: #f2f2f2;
+        border-radius: 8px;
+        font-weight: bold;
+
+    }
+
+
+    .track-btn,
+    .home-btn {
+
+        padding: 13px 22px;
+        border: none;
+        border-radius: 7px;
+        color: white !important;
+        font-size: 16px;
+        cursor: pointer;
+        margin: 5px;
+
+    }
+
+
+    .track-btn {
+
+        background: brown !important;
+
+    }
+
+
+    .home-btn {
+
+        background: #555 !important;
+
+    }
+
+
+    @media(max-width: 600px) {
+
+        .success-box {
+
+            padding: 20px;
+
+        }
+
+
+        .track-btn,
+        .home-btn {
+
+            width: 100%;
+            margin: 8px 0;
+
+        }
+
+    }
+
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<header class="header">
+
+    <h1>Furniture Shop</h1>
+
+    <div class="top-icons">
+
+        <a href="home.html" class="icon-btn">🏠</a>
+
+        <a href="cart.html" class="icon-btn">🛒</a>
+
+        <a href="account.html" class="icon-btn">👤</a>
+
+        <a href="settings.html" class="icon-btn">⚙️</a>
+
+    </div>
+
+</header>
+
+
+
+<div class="success-page">
+
+    <div class="success-box">
+
+
+        <h2 class="success-title">
+
+            ✅ Order Placed Successfully!
+
+        </h2>
+
+
+        <div
+            id="orderDetails"
+            class="success-order-details"
+        ></div>
+
+
+        <button
+            class="track-btn"
+            onclick="trackOrder()"
+        >
+
+            📦 Track Order
+
+        </button>
+
+
+        <button
+            class="home-btn"
+            onclick="goHome()"
+        >
+
+            Continue Shopping
+
+        </button>
+
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+
+    var order =
+        JSON.parse(
+            localStorage.getItem("lastOrder")
+        );
+
+
+    function displayOrder() {
+
+
+        if (!order) {
+
+            document.getElementById(
+                "orderDetails"
+            ).innerHTML =
+                "<h3>No order found.</h3>";
+
+            return;
+
+        }
+
+
+        var itemsHTML = "";
+
+
+        order.items.forEach(function(item) {
+
+
+            itemsHTML += `
+
+                <div class="success-item">
+
+                    <strong>
+                        ${item.name}
+                    </strong>
+
+                    <br>
+
+                    Quantity:
+                    ${item.quantity}
+
+                </div>
+
+            `;
+
+        });
+
+
+
+        document.getElementById(
+            "orderDetails"
+        ).innerHTML = `
+
+
+            <h3>
+
+                Order ID:
+                ${order.orderID}
+
+            </h3>
+
+
+            <hr>
+
+
+            <h3>Your Items</h3>
+
+
+            ${itemsHTML}
+
+
+            <hr>
+
+
+            <p>
+
+                Product Price:
+
+                <strong>
+
+                    ₹${Number(
+                        order.productTotal
+                    ).toLocaleString("en-IN")}
+
+                </strong>
+
+            </p>
+
+
+            <p>
+
+                Shipping Charge:
+
+                <strong>
+                    ₹${order.shippingCharge}
+                </strong>
+
+            </p>
+
+
+            <p>
+
+                Platform Fee:
+
+                <strong>
+                    ₹${order.platformFee}
+                </strong>
+
+            </p>
+
+
+            <hr>
+
+
+            <p class="success-total">
+
+                Total Amount:
+                ₹${Number(
+                    order.grandTotal
+                ).toLocaleString("en-IN")}
+
+            </p>
+
+
+            <p>
+
+                Payment Method:
+
+                <strong>
+                    ${order.paymentMethod}
+                </strong>
+
+            </p>
+
+
+            <hr>
+
+
+            <h3>
+                📦 Expected Delivery
+            </h3>
+
+
+            <p>
+                ${order.expectedDate}
+            </p>
+
+
+            <div class="success-status">
+
+                🚚 Status:
+
+                ${order.status || "Order Confirmed"}
+
+            </div>
+
+        `;
+
+    }
+
+
+
+    function trackOrder() {
+
+        window.location.href =
+            "track-order.html";
+
+    }
+
+
+
+    function goHome() {
+
+        window.location.href =
+            "home.html";
+
+    }
+
+
+
+    displayOrder();
+
+
+</script>
+```
+
+</body>
+
+</html>

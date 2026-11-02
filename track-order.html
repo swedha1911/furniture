@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Track Order</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <header class="header">
+
+        <h1>📦 Track Your Order</h1>
+
+        <div class="top-icons">
+
+        <a href="home.html" class="icon-btn">🏠</a>
+
+        <a href="cart.html" class="icon-btn">🛒</a>
+
+        <a href="account.html" class="icon-btn">👤</a>
+
+        <a href="settings.html" class="icon-btn">⚙️</a>
+
+    </div>
+
+
+    </header>
+
+
+    <div class="checkout-container">
+
+        <h2>Order Tracking</h2>
+
+        <div id="trackingDetails"></div>
+
+        <br>
+
+        <button onclick="goHome()">
+            Continue Shopping
+        </button>
+
+    </div>
+
+
+    <script>
+
+        var order =
+            JSON.parse(
+                localStorage.getItem("lastOrder")
+            );
+
+
+        function getCurrentStatus() {
+
+            if (!order || !order.orderTime) {
+
+                return 1;
+
+            }
+
+
+            var elapsedTime =
+                Date.now() - order.orderTime;
+
+
+            var minutes =
+                elapsedTime / (1000 * 60);
+
+
+            if (minutes < 1) {
+
+                return 1;
+
+            }
+
+            else if (minutes < 2) {
+
+                return 2;
+
+            }
+
+            else if (minutes < 3) {
+
+                return 3;
+
+            }
+
+            else if (minutes < 4) {
+
+                return 4;
+
+            }
+
+            else {
+
+                return 5;
+
+            }
+
+        }
+
+
+        function displayTracking() {
+
+            var trackingDetails =
+                document.getElementById(
+                    "trackingDetails"
+                );
+
+
+            if (!order) {
+
+                trackingDetails.innerHTML = `
+
+                    <h3>No order found.</h3>
+
+                    <p>
+                        Please place an order first.
+                    </p>
+
+                `;
+
+                return;
+
+            }
+
+
+            var currentStatus =
+                getCurrentStatus();
+
+
+            var steps = [
+
+                {
+                    icon: "✅",
+                    title: "Order Confirmed",
+                    text: "Your order has been confirmed."
+                },
+
+                {
+                    icon: "📦",
+                    title: "Processing",
+                    text: "Your product is being prepared."
+                },
+
+                {
+                    icon: "🚚",
+                    title: "Shipped",
+                    text: "Your order has been shipped."
+                },
+
+                {
+                    icon: "🛵",
+                    title: "Out for Delivery",
+                    text: "Your product is on the way."
+                },
+
+                {
+                    icon: "🏠",
+                    title: "Delivered",
+                    text: "Your product has been delivered."
+                }
+
+            ];
+
+
+            var html = `
+
+                <div class="order-summary">
+
+                    <h3>
+                        Order ID:
+                        ${order.orderID}
+                    </h3>
+
+                    <p>
+                        Expected Delivery:
+                        <strong>
+                            ${order.expectedDate}
+                        </strong>
+                    </p>
+
+                </div>
+
+                <hr>
+
+                <div class="tracking-timeline">
+            `;
+
+
+            steps.forEach(function(step, index) {
+
+                var stepNumber =
+                    index + 1;
+
+
+                var activeClass = "";
+
+
+                if (stepNumber <= currentStatus) {
+
+                    activeClass = "completed";
+
+                }
+
+
+                if (stepNumber === currentStatus) {
+
+                    activeClass = "completed current";
+
+                }
+
+
+                html += `
+
+                    <div class="tracking-step
+                                ${activeClass}">
+
+                        <div class="tracking-icon">
+
+                            ${step.icon}
+
+                        </div>
+
+                        <div class="tracking-info">
+
+                            <h3>
+                                ${step.title}
+                            </h3>
+
+                            <p>
+                                ${step.text}
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            });
+
+
+            html += `
+
+                </div>
+
+            `;
+
+
+            trackingDetails.innerHTML =
+                html;
+
+        }
+
+
+        function goHome() {
+
+            window.location.href =
+                "home.html";
+
+        }
+
+
+        displayTracking();
+
+
+        /* Update every 10 seconds */
+
+        setInterval(
+            displayTracking,
+            10000
+        );
+
+    </script>
+
+</body>
+
+</html>

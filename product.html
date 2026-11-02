@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Product Details</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <!-- Header -->
+
+    <header class="header">
+
+        <h1>Furniture Shop</h1>
+
+        <header class="header">
+
+    <h1>Livora Furniture</h1>
+
+    <div class="top-icons">
+
+        <a href="home.html" class="icon-btn">🏠</a>
+
+        <a href="cart.html" class="icon-btn">🛒</a>
+
+        <a href="account.html" class="icon-btn">👤</a>
+
+        <a href="settings.html" class="icon-btn">⚙️</a>
+
+    </div>
+
+</header>
+
+    </header>
+
+
+    <!-- Product Details -->
+
+    <div class="product-details">
+
+        <div class="product-image">
+
+            <img id="productImage" src="" alt="Sofa">
+
+        </div>
+
+
+        <div class="product-info">
+
+            <h2 id="productName"></h2>
+
+            <h3 id="productPrice"></h3>
+
+            <p id="productDescription"></p>
+
+            <label>Quantity:</label>
+
+            <input
+                type="number"
+                id="quantity"
+                value="1"
+                min="1"
+            >
+
+            <br><br>
+
+            <button onclick="addToCart()">
+                Add to Cart
+            </button>
+            
+
+            <button onclick="buyNow()">
+                Buy Now
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        var products = {
+
+            modern: {
+                name: "Modern Sofa",
+                price: "₹18,999",
+                image: "images/modsof.jpg",
+                description: "Premium quality modern sofa with soft cushions. Perfect for living room and home decoration."
+            },
+
+            lshape: {
+                name: "L Shape Sofa",
+                price: "₹24,999",
+                image: "images/lshape.jpg",
+                description: "Comfortable L Shape Sofa with stylish design. Perfect for spacious living rooms."
+            },
+
+            luxury: {
+                name: "Luxury Sofa",
+                price: "₹29,999",
+                image: "images/lux.jpg",
+                description: "Elegant luxury sofa made with premium materials. Perfect for a stylish home."
+            },
+
+            recliner: {
+                name: "Recliner Sofa",
+                price: "₹32,999",
+                image: "images/rec.jpg",
+                description: "Comfortable recliner sofa designed for relaxing and enjoying your free time."
+            },
+
+            fabric: {
+                name: "Fabric Sofa",
+                price: "₹16,999",
+                image: "images/fab.jpg",
+                description: "Soft and comfortable fabric sofa with a simple and beautiful design."
+            },
+
+            wooden: {
+                name: "Wooden Sofa",
+                price: "₹21,999",
+                image: "images/wood.jpg",
+                description: "Strong and durable wooden sofa with a classic furniture design."
+            },
+
+            three: {
+                name: "3 Seater Sofa",
+                price: "₹19,999",
+                image: "images/3seat.jpg",
+                description: "Spacious 3 Seater Sofa suitable for families and comfortable living rooms."
+            },
+
+            premium: {
+                name: "Premium Sofa",
+                price: "₹34,999",
+                image: "images/pre.jpg",
+                description: "Premium quality sofa with elegant design and excellent comfort."
+            },
+            /* CHAIRS */
+
+            loungechair: {
+                name: "Lounge Chair",
+                price: "₹2,999",
+                image: "images/chair1.jpg",
+                description: "Comfortable lounge chair with a stylish design."
+            },
+
+            officechair: {
+                name: "Office Chair",
+                price: "₹999",
+                image: "images/chair2.jpg",
+                description: "Comfortable office chair designed for work and study."
+            },
+
+            woodenchair: {
+                name: "Wooden Chair",
+                price: "₹3,499",
+                image: "images/chair3.jpg",
+                description: "Strong and durable wooden chair with a classic design."
+            },
+
+            plasticchair: {
+                name: "Plastic Chair",
+                price: "₹6,999",
+                image: "images/chair4.jpg",
+                description: "Lightweight and durable plastic chair."
+            },
+
+            reclinerchair: {
+                name: "Recliner Chair",
+                price: "₹5,499",
+                image: "images/chair5.jpg",
+                description: "Comfortable recliner chair for relaxing."
+            },
+
+            rockingchair: {
+                name: "Rocking Chair",
+                price: "₹4,499",
+                image: "images/chair6.jpg",
+                description: "Comfortable rocking chair for relaxing."
+            },
+
+             armchair: {
+                name: "Arm Chair",
+                price: "₹7,499",
+                image: "images/chair7.jpg",
+                description: "Stylish arm chair with comfortable seating."
+            },
+            kingsizebed: {
+                name: "King Size Bed",
+                price: "₹24,999",
+                image: "images/bed1.jpg",
+                description: "Spacious and comfortable bed suitable for a large bedroom."
+            },
+
+            queensizebed: {
+                name: "Queen Size Bed",
+                price: "₹19,999",
+                image: "images/bed2.jpg",
+                description: "Comfortable queen size bed with a stylish modern design."
+            },
+
+            woodenbed: {
+                name: "Wooden Bed",
+                price: "₹17,999",
+                image: "images/bed3.jpg",
+                description: "Strong and durable wooden bed for everyday comfort."
+            },
+
+            storagebed: {
+                name: "Storage Bed",
+                price: "₹22,499",
+                image: "images/bed4.jpg",
+                description: "Modern bed with extra storage space for your belongings."
+            },
+
+            platformbed: {
+                name: "Platform Bed",
+                price: "₹16,999",
+                image: "images/bed5.jpg",
+                description: "Simple and stylish platform bed with a modern look."
+            },
+
+            upholsteredbed: {
+                name: "Upholstered Bed",
+                price: "₹28,999",
+                image: "images/bed6.jpg",
+                description: "Premium upholstered bed designed for comfort and elegance."
+            },
+
+            bunkbed: {
+                name: "Bunk Bed",
+                price: "₹21,999",
+                image: "images/bed7.jpg",
+                description: "Space-saving bunk bed suitable for shared rooms."
+            },
+            woodendining: {
+                name: "Wooden Dining Table",
+                price: "₹18,999",
+                image: "images/dining1.jpg",
+                description: "A strong and stylish wooden dining table suitable for everyday family meals."
+            },
+
+            glassdining: {
+                name: "Glass Top Dining Table",
+                price: "₹22,999",
+                image: "images/dining2.jpg",
+                description: "A modern dining table with an elegant glass top design."
+            },
+
+            marbledining: {
+                name: "Marble Dining Table",
+                price: "₹29,999",
+                image: "images/dining3.jpg",
+                description: "A premium dining table with a beautiful and elegant marble finish."
+            },
+
+            fourseaterdining: {
+                name: "4 Seater Dining Table",
+                price: "₹16,999",
+                image: "images/dining4.jpg",
+                description: "A comfortable dining table designed for four people."
+            },
+
+            sixseaterdining: {
+                name: "6 Seater Dining Table",
+                price: "₹24,999",
+                image: "images/dining5.jpg",
+                description: "A spacious dining table suitable for six people."
+            },
+
+            rounddining: {
+                name: "Round Dining Table",
+                price: "₹20,999",
+                image: "images/dining6.jpg",
+                description: "A stylish round dining table with a modern design."
+            },
+
+            moderndining: {
+                name: "Modern Dining Table",
+                price: "₹26,999",
+                image: "images/dining7.jpg",
+                description: "A contemporary dining table designed to give your dining space a modern look."
+            },
+            twodoorwardrobe: {
+                name: "2 Door Wardrobe",
+                price: "₹12,999",
+                image: "images/wardrobe1.jpg",
+                description: "A compact and stylish 2 door wardrobe with useful storage space."
+            },
+
+            threedoorwardrobe: {
+                name: "3 Door Wardrobe",
+                price: "₹16,999",
+                image: "images/wardrobe2.jpg",
+                description: "A spacious 3 door wardrobe suitable for organizing clothes and accessories."
+            },
+
+            slidingwardrobe: {
+                name: "Sliding Door Wardrobe",
+                price: "₹24,999",
+                image: "images/wardrobe3.jpg",
+                description: "A modern wardrobe with smooth sliding doors and spacious storage."
+            },
+
+            woodenwardrobe: {
+                name: "Wooden Wardrobe",
+                price: "₹18,999",
+                image: "images/wardrobe4.jpg",
+                description: "A strong and elegant wooden wardrobe designed for everyday use."
+            },
+
+            modernwardrobe: {
+                name: "Modern Wardrobe",
+                price: "₹21,999",
+                image: "images/wardrobe5.jpg",
+                description: "A stylish modern wardrobe that gives your bedroom a contemporary look."
+            },
+
+            mirrorwardrobe: {
+                name: "Mirror Wardrobe",
+                price: "₹26,999",
+                image: "images/wardrobe6.jpg",
+                description: "A premium wardrobe with a built-in mirror and spacious storage."
+            },
+
+            storagewardrobe: {
+                name: "Storage Wardrobe",
+                price: "₹19,999",
+                image: "images/wardrobe7.jpg",
+                description: "A practical wardrobe with extra storage space for clothes and other essentials."
+            },
+            woodentv: {
+name: "Wooden TV Unit",
+price: "₹14,999",
+image: "images/tv1.jpg",
+description: "A stylish and durable wooden TV unit with useful storage space."
+},
+
+wallmountedtv: {
+name: "Wall Mounted TV Unit",
+price: "₹18,999",
+image: "images/tv2.jpg",
+description: "A modern wall mounted TV unit designed to save space."
+},
+
+moderntv: {
+name: "Modern TV Unit",
+price: "₹21,999",
+image: "images/tv3.jpg",
+description: "A contemporary TV unit that gives your living room a modern look."
+},
+
+storagetv: {
+name: "Storage TV Unit",
+price: "₹16,999",
+image: "images/tv4.jpg",
+description: "A practical TV unit with extra storage for your accessories."
+},
+
+floatingtv: {
+name: "Floating TV Unit",
+price: "₹19,999",
+image: "images/tv5.jpg",
+description: "A stylish floating TV unit with a clean and modern design."
+},
+
+cornertv: {
+name: "Corner TV Unit",
+price: "₹17,999",
+image: "images/tv6.jpg",
+description: "A compact TV unit designed to fit perfectly in a corner."
+},
+
+entertainmenttv: {
+name: "Entertainment TV Unit",
+price: "₹25,999",
+image: "images/tv7.jpg",
+description: "A spacious entertainment TV unit with a premium modern design."
+}
+
+
+        };
+
+
+        /* Get selected sofa from URL */
+
+        var urlParams =
+            new URLSearchParams(window.location.search);
+
+        var selectedProduct =
+            urlParams.get("product");
+
+
+        /* Show selected sofa */
+
+        if (products[selectedProduct]) {
+
+            document.getElementById("productImage").src =
+                products[selectedProduct].image;
+
+            document.getElementById("productName").innerText =
+                products[selectedProduct].name;
+
+            document.getElementById("productPrice").innerText =
+                products[selectedProduct].price;
+
+            document.getElementById("productDescription").innerText =
+                products[selectedProduct].description;
+
+        }
+
+
+        /* Add to Cart */
+
+        function addToCart() {
+
+            var quantity =
+                parseInt(
+                    document.getElementById("quantity").value
+                );
+
+
+            if (quantity < 1 || isNaN(quantity)) {
+
+                alert("Please enter a valid quantity.");
+
+                return;
+
+            }
+
+
+            /* Get existing cart */
+
+            var cart =
+                JSON.parse(
+                    localStorage.getItem("cart")
+                ) || [];
+
+
+            /* Check if product already exists */
+
+            var existingProduct =
+                cart.find(function(item) {
+
+                    return item.name ===
+                        products[selectedProduct].name;
+
+                });
+
+
+            if (existingProduct) {
+
+                /* Increase quantity */
+
+                existingProduct.quantity =
+                    existingProduct.quantity + quantity;
+
+            }
+
+            else {
+
+                /* Add new product */
+
+                cart.push({
+
+                    name:
+                        products[selectedProduct].name,
+
+                    price:
+                        products[selectedProduct].price,
+
+                    image:
+                        products[selectedProduct].image,
+
+                    quantity:
+                        quantity
+
+                });
+
+            }
+
+
+            /* Save cart */
+
+            localStorage.setItem(
+                "cart",
+                JSON.stringify(cart)
+            );
+
+
+            alert(
+                products[selectedProduct].name +
+                " added to cart!"
+            );
+
+
+            window.location.href =
+                "cart.html";
+
+        }
+
+
+        /* Buy Now */
+
+function buyNow() {
+
+
+var quantity =
+    parseInt(
+        document.getElementById("quantity").value
+    );
+
+
+if (quantity < 1 || isNaN(quantity)) {
+
+    quantity = 1;
+
+}
+
+
+/* தற்போதைய product details */
+
+var buyProduct = {
+
+    name:
+        products[selectedProduct].name,
+
+    price:
+        products[selectedProduct].price,
+
+    image:
+        products[selectedProduct].image,
+
+    quantity:
+        quantity
+
+};
+
+
+/* தற்போதைய product மட்டும் checkout-க்கு save */
+
+localStorage.setItem(
+    "cart",
+    JSON.stringify([buyProduct])
+);
+
+
+/* Direct Checkout */
+
+window.location.href =
+    "checkout.html";
+
+
+}
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+```
+<meta charset="UTF-8">
+
+<meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+<title>My Account</title>
+
+<link rel="stylesheet"
+    href="css/style.css">
+```
+
+</head>
+
+<body>
+
+```
+<header class="header">
+
+    <h1>👤 My Account</h1>
+
+    <div class="top-icons">
+
+        <a href="home.html" class="icon-btn">🏠</a>
+
+        <a href="cart.html" class="icon-btn">🛒</a>
+
+        <a href="account.html" class="icon-btn">👤</a>
+
+        <a href="settings.html" class="icon-btn">⚙️</a>
+
+    </div>
+
+
+</header>
+
+
+
+<div class="account-container">
+
+    <div class="account-box">
+
+        <h2>My Profile</h2>
+
+
+        <label>Name</label>
+
+        <input
+            type="text"
+            id="accountName"
+            placeholder="Enter your name"
+        >
+
+
+        <label>Email</label>
+
+        <input
+            type="email"
+            id="accountEmail"
+            placeholder="Enter your email"
+        >
+
+
+        <label>Phone Number</label>
+
+        <input
+            type="tel"
+            id="accountPhone"
+            placeholder="Enter your phone number"
+        >
+
+
+        <button onclick="saveProfile()">
+
+            Save Profile
+
+        </button>
+
+
+        <hr>
+
+
+        <h2>My Orders</h2>
+
+
+        <button
+            class="account-btn"
+            onclick="viewOrders()"
+        >
+
+            📦 View My Order
+
+        </button>
+
+
+        <button
+            class="account-btn"
+            onclick="trackOrder()"
+        >
+
+            🚚 Track Order
+
+        </button>
+
+
+        <button
+            class="logout-btn"
+            onclick="logout()"
+        >
+
+            🚪 Logout
+
+        </button>
+
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+
+    /* Load saved profile */
+
+    var profile =
+        JSON.parse(
+            localStorage.getItem("profile")
+        );
+
+
+    if(profile){
+
+        document.getElementById(
+            "accountName"
+        ).value = profile.name || "";
+
+
+        document.getElementById(
+            "accountEmail"
+        ).value = profile.email || "";
+
+
+        document.getElementById(
+            "accountPhone"
+        ).value = profile.phone || "";
+
+    }
+
+
+
+    /* Save Profile */
+
+    function saveProfile(){
+
+        var name =
+            document.getElementById(
+                "accountName"
+            ).value.trim();
+
+
+        var email =
+            document.getElementById(
+                "accountEmail"
+            ).value.trim();
+
+
+        var phone =
+            document.getElementById(
+                "accountPhone"
+            ).value.trim();
+
+
+        if(
+            name === "" ||
+            email === "" ||
+            phone === ""
+        ){
+
+            alert(
+                "Please fill all details"
+            );
+
+            return;
+
+        }
+
+
+        var profile = {
+
+            name: name,
+
+            email: email,
+
+            phone: phone
+
+        };
+
+
+        localStorage.setItem(
+            "profile",
+            JSON.stringify(profile)
+        );
+
+
+        alert(
+            "Profile saved successfully!"
+        );
+
+    }
+
+
+
+    function viewOrders(){
+
+        var order =
+            JSON.parse(
+                localStorage.getItem(
+                    "lastOrder"
+                )
+            );
+
+
+        if(!order){
+
+            alert(
+                "No orders found."
+            );
+
+            return;
+
+        }
+
+
+        window.location.href =
+            "success.html";
+
+    }
+
+
+
+    function trackOrder(){
+
+        var order =
+            JSON.parse(
+                localStorage.getItem(
+                    "lastOrder"
+                )
+            );
+
+
+        if(!order){
+
+            alert(
+                "No order found."
+            );
+
+            return;
+
+        }
+
+
+        window.location.href =
+            "track-order.html";
+
+    }
+
+
+
+    function logout(){
+
+        var confirmLogout =
+            confirm(
+                "Are you sure you want to logout?"
+            );
+
+
+        if(confirmLogout){
+
+            window.location.href =
+                "index.html";
+
+        }
+
+    }
+
+
+</script>
+```
+
+</body>
+
+</html>

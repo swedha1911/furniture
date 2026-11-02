@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+```
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LIVORA FURNITURE - Home</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+
+    .home-header{
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .header-title{
+        margin-right: auto;
+    }
+
+    .search-box{
+        display: flex;
+        align-items: center;
+    }
+
+    .top-icons{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .icon-btn{
+        text-decoration: none;
+        font-size: 22px;
+        cursor: pointer;
+        background: white;
+        border: none;
+        padding: 8px 10px;
+        border-radius: 50%;
+    }
+
+    .settings-menu{
+        position: relative;
+    }
+
+    .settings-dropdown{
+        display: none;
+        position: absolute;
+        right: 0;
+        top: 48px;
+        width: 190px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        z-index: 1000;
+        overflow: hidden;
+    }
+
+    .settings-dropdown.show{
+        display: block;
+    }
+
+    .settings-dropdown a{
+        display: block;
+        padding: 12px 15px;
+        text-decoration: none;
+        color: black;
+    }
+
+    .settings-dropdown a:hover{
+        background: #f2f2f2;
+    }
+
+    .product-card{
+        cursor: pointer;
+    }
+
+    .product-card:hover{
+        transform: translateY(-5px);
+    }
+
+    @media(max-width: 700px){
+
+        .home-header{
+            justify-content: center;
+        }
+
+        .header-title{
+            width: 100%;
+            text-align: center;
+            margin-right: 0;
+        }
+
+    }
+
+</style>
+```
+
+</head>
+<script>
+
+function updateCartCount() {
+
+    var cart =
+        JSON.parse(localStorage.getItem("cart")) || [];
+
+    var totalItems = 0;
+
+    for (var i = 0; i < cart.length; i++) {
+
+        totalItems = totalItems + Number(cart[i].quantity);
+
+    }
+
+    var cartCount =
+        document.getElementById("cartCount");
+
+    if (cartCount) {
+
+        cartCount.innerText = totalItems;
+
+    }
+
+}
+
+
+/* Page open ஆகும்போது */
+
+updateCartCount();
+
+
+/* Home page திரும்பும்போது update ஆக */
+
+window.addEventListener(
+    "focus",
+    updateCartCount
+);
+
+
+/* Page visible ஆனாலும் update ஆக */
+
+document.addEventListener(
+    "visibilitychange",
+    function() {
+
+        if (!document.hidden) {
+
+            updateCartCount();
+
+        }
+
+    }
+);
+
+</script>
+
+<body>
+
+```
+<!-- Header -->
+
+<header class="header home-header">
+
+    <h1 class="header-title">
+        🪑LIVORA FURNITURE
+    </h1>
+    <p>Live Beautifully. Feel at Home.</p>
+
+
+    <!-- Search Box -->
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search Furniture..."
+        >
+
+        <button onclick="searchFurniture()">
+            Search
+        </button>
+
+    </div>
+
+
+    <!-- Top Icons -->
+
+    <div class="top-icons">
+
+        <a
+            href="home.html"
+            class="icon-btn"
+            title="Home"
+        >
+            🏠
+        </a>
+
+
+        <a
+            href="cart.html"
+            class="icon-btn"
+            title="Cart"
+        >
+            🛒
+        </a>
+
+
+        <a
+            href="account.html"
+            class="icon-btn"
+            title="My Account"
+        >
+            👤
+        </a>
+
+
+        <!-- Settings -->
+
+        <div class="settings-menu">
+
+            <button
+                class="icon-btn"
+                onclick="toggleSettings()"
+                title="Settings"
+            >
+                ⚙️
+            </button>
+
+
+            <div
+                id="settingsDropdown"
+                class="settings-dropdown"
+            >
+
+                <a href="account.html">
+                    👤 My Account
+                </a>
+
+                <a href="track-order.html">
+                    📦 Track Order
+                </a>
+
+                <a href="cart.html" class="icon-btn">
+    🛒 <span id="cartCount">0</span>
+</a>
+
+                <a href="home.html">
+                    🏠 Home
+                </a>
+
+                <a href="index.html">
+                    🚪 Logout
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- Categories -->
+
+<section class="category-section">
+
+    <h2>Shop by Category</h2>
+
+
+    <div class="categories">
+
+        <button onclick="location.href='sofa.html'">
+            Sofa
+        </button>
+
+        <button onclick="location.href='chair.html'">
+            Chair
+        </button>
+
+        <button onclick="location.href='bed.html'">
+            Bed
+        </button>
+
+        <button onclick="location.href='dining.html'">
+            Dining Table
+        </button>
+
+        <button onclick="location.href='wardrobe.html'">
+            Wardrobe
+        </button>
+
+        <button onclick="location.href='tv.html'">
+            TV Unit
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- Furniture Images -->
+
+<section class="product-section">
+
+    <h2>Our Furniture</h2>
+
+
+    <div class="products">
+
+
+        <!-- Sofa -->
+
+        <div
+            class="product-card"
+            onclick="location.href='sofa.html'"
+        >
+
+            <img
+                src="images/sofa.png"
+                alt="Sofa"
+            >
+
+            <h3>Sofa</h3>
+
+        </div>
+
+
+
+        <!-- Chair -->
+
+        <div
+            class="product-card"
+            onclick="location.href='chair.html'"
+        >
+
+            <img
+                src="images/chair.png"
+                alt="Chair"
+            >
+
+            <h3>Chair</h3>
+
+        </div>
+
+
+
+        <!-- Bed -->
+
+        <div
+            class="product-card"
+            onclick="location.href='bed.html'"
+        >
+
+            <img
+                src="images/bed.png"
+                alt="Bed"
+            >
+
+            <h3>Bed</h3>
+
+        </div>
+
+
+
+        <!-- Dining Table -->
+
+        <div
+            class="product-card"
+            onclick="location.href='dining.html'"
+        >
+
+            <img
+                src="images/table.png"
+                alt="Dining Table"
+            >
+
+            <h3>Dining Table</h3>
+
+        </div>
+
+
+
+        <!-- Wardrobe -->
+
+        <div
+            class="product-card"
+            onclick="location.href='wardrobe.html'"
+        >
+
+            <img
+                src="images/wardrobe.png"
+                alt="Wardrobe"
+            >
+
+            <h3>Wardrobe</h3>
+
+        </div>
+
+
+
+        <!-- TV Unit -->
+
+        <div
+            class="product-card"
+            onclick="location.href='tv.html'"
+        >
+
+            <img
+                src="images/tvunit.png"
+                alt="TV Unit"
+            >
+
+            <h3>TV Unit</h3>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<script>
+
+
+    /* =====================
+       SETTINGS DROPDOWN
+    ===================== */
+
+    function toggleSettings(){
+
+        document
+            .getElementById("settingsDropdown")
+            .classList
+            .toggle("show");
+
+    }
+
+
+
+    /* =====================
+       SEARCH FURNITURE
+    ===================== */
+
+    function searchFurniture(){
+
+        var search =
+            document
+            .getElementById("searchInput")
+            .value
+            .toLowerCase()
+            .trim();
+
+
+        if(search == ""){
+
+            alert("Please enter furniture name");
+
+        }
+
+
+        else if(search.includes("sofa")){
+
+            location.href = "sofa.html";
+
+        }
+
+
+        else if(search.includes("chair")){
+
+            location.href = "chair.html";
+
+        }
+
+
+        else if(search.includes("bed")){
+
+            location.href = "bed.html";
+
+        }
+
+
+        else if(search.includes("dining")){
+
+            location.href = "dining.html";
+
+        }
+
+
+        else if(search.includes("wardrobe")){
+
+            location.href = "wardrobe.html";
+
+        }
+
+
+        else if(
+            search.includes("tv") ||
+            search.includes("tv unit")
+        ){
+
+            location.href = "tv.html";
+
+        }
+
+
+        else{
+
+            alert("Furniture not found");
+
+        }
+
+    }
+
+
+    /* Enter key for search */
+
+    document
+        .getElementById("searchInput")
+        .addEventListener(
+            "keypress",
+            function(event){
+
+                if(event.key === "Enter"){
+
+                    searchFurniture();
+
+                }
+
+            }
+        );
+
+</script>
+```
+
+</body>
+
+</html>
