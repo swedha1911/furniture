@@ -1,0 +1,913 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#f2f2f2;
+    margin:0;
+    padding:0;
+}
+
+.header{
+    background:brown;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+.search-box{
+    margin-top:15px;
+}
+
+.search-box input{
+    width:300px;
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+
+.search-box button{
+    padding:10px 20px;
+    background:brown;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.category-section{
+    padding:20px;
+}
+
+.category-section h2{
+    margin-bottom:15px;
+}
+
+.categories{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.categories button{
+    background:brown;
+    color:white;
+    border:none;
+    padding:10px 20px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.product-section{
+    padding:20px;
+}
+
+.product-section h2{
+    margin-bottom:20px;
+}
+
+.products{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
+}
+
+.product-card{
+    width:250px;
+    background:white;
+    border-radius:10px;
+    padding:15px;
+    text-align:center;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+.product-card img{
+    width:100%;
+    height:220px;
+    object-fit:contain;
+}
+
+.product-card h3{
+    margin:10px 0;
+}
+
+.product-card p{
+    font-size:18px;
+    color:brown;
+    margin-bottom:10px;
+}
+
+.product-card button{
+    width:100%;
+    padding:10px;
+    background:brown;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.product-card button:hover{
+    background:#5c3317;
+}
+
+/* Product Details Page */
+
+.product-details{
+    width:90%;
+    max-width:1000px;
+    margin:50px auto;
+    background:white;
+    padding:30px;
+    display:flex;
+    gap:50px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+.product-image{
+    width:50%;
+}
+
+.product-image img{
+    width:100%;
+    height:400px;
+    object-fit:cover;
+    border-radius:10px;
+}
+
+.product-info{
+    width:50%;
+    padding:20px;
+}
+
+.product-info h2{
+    font-size:32px;
+    margin-bottom:15px;
+}
+
+.product-info h3{
+    font-size:25px;
+    color:brown;
+    margin-bottom:20px;
+}
+
+.product-info p{
+    font-size:17px;
+    line-height:1.6;
+    color:#555;
+    margin-bottom:20px;
+}
+
+.product-info label{
+    font-size:18px;
+    font-weight:bold;
+}
+
+.product-info input{
+    width:60px;
+    padding:8px;
+    margin-left:10px;
+}
+
+.product-info button{
+    width:auto;
+    padding:12px 20px;
+    margin-right:10px;
+    background:brown;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.product-info button:hover{
+    background:#5c3317;
+}
+
+/* Furniture Login Background */
+
+.furniture-background {
+    width: 100%;
+    min-height: 100vh;
+
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ead7c3,
+            #c9a98b
+        );
+}
+
+
+/* Furniture Background Items */
+
+.furniture {
+    position: absolute;
+
+    font-size: 100px;
+
+    opacity: 0.35;
+
+    filter: blur(1px);
+}
+
+
+/* Furniture Positions */
+
+.furniture1 {
+    left: 5%;
+    bottom: 8%;
+}
+
+.furniture2 {
+    left: 18%;
+    top: 12%;
+}
+
+.furniture3 {
+    right: 5%;
+    bottom: 5%;
+}
+
+.furniture4 {
+    right: 20%;
+    top: 10%;
+}
+
+.furniture5 {
+    left: 3%;
+    top: 45%;
+}
+
+.furniture6 {
+    right: 8%;
+    top: 35%;
+}
+
+.furniture7 {
+    right: 30%;
+    bottom: 5%;
+}
+
+
+/* Login Box */
+
+.login-box {
+    position: relative;
+    z-index: 10;
+
+    width: 360px;
+
+    padding: 40px;
+
+    background: rgba(255, 255, 255, 0.95);
+
+    border-radius: 20px;
+
+    text-align: center;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+
+/* Logo */
+
+.login-logo {
+    width: 70px;
+    height: 70px;
+
+    margin: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #ead7c3;
+
+    border-radius: 50%;
+
+    font-size: 38px;
+}
+
+
+/* Heading */
+
+.login-box h1 {
+    color: #5b3925;
+
+    margin-bottom: 5px;
+}
+
+
+/* Paragraph */
+
+.login-box p {
+    color: #777;
+
+    margin-bottom: 25px;
+}
+
+
+/* Inputs */
+
+.login-box input {
+    width: 100%;
+
+    padding: 13px;
+
+    margin: 10px 0;
+
+    box-sizing: border-box;
+
+    border: 1px solid #ccc;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+}
+
+
+.login-box input:focus {
+    outline: none;
+
+    border-color: #8b5e3c;
+}
+
+
+/* Login Button */
+
+.login-box button {
+    width: 100%;
+
+    padding: 13px;
+
+    margin-top: 15px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #8b5e3c;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.login-box button:hover {
+    background: #6b4228;
+}
+
+
+/* Bottom Text */
+
+.login-box small {
+    display: block;
+
+    margin-top: 22px;
+
+    color: #888;
+
+    font-size: 13px;
+}
+
+/* Order Tracking */
+
+.tracking-timeline {
+    margin-top: 30px;
+}
+
+.tracking-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-left: 4px solid #ccc;
+    opacity: 0.45;
+}
+
+.tracking-step.completed {
+    opacity: 1;
+    border-left: 4px solid green;
+}
+
+.tracking-step.current {
+    background: #f0fff0;
+    border-radius: 8px;
+}
+
+.tracking-icon {
+    font-size: 30px;
+    min-width: 45px;
+}
+
+.tracking-info h3 {
+    margin: 0 0 5px;
+}
+
+.tracking-info p {
+    margin: 0;
+}
+
+.order-summary {
+    padding: 15px;
+    background: #f5f5f5;
+    border-radius: 8px;
+}
+.chair-products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+    padding: 30px;
+}
+
+.chair-card {
+    width: 220px;
+    background: white;
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.chair-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.chair-card h3 {
+    margin: 12px 0 8px;
+}
+
+.chair-card button {
+    padding: 9px 15px;
+    background: brown;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+/* =========================
+TOP HEADER ICONS
+========================= */
+
+.header{
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.top-icons{
+display: flex;
+align-items: center;
+gap: 15px;
+}
+
+.icon-btn{
+text-decoration: none;
+font-size: 24px;
+cursor: pointer;
+background: white;
+padding: 8px 10px;
+border-radius: 50%;
+transition: 0.3s;
+}
+
+.icon-btn:hover{
+transform: scale(1.1);
+}
+
+.settings-menu{
+position: relative;
+}
+
+.settings-btn{
+border: none;
+}
+
+.settings-dropdown{
+display: none;
+position: absolute;
+top: 50px;
+right: 0;
+width: 190px;
+background: white;
+border-radius: 10px;
+box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+overflow: hidden;
+z-index: 1000;
+}
+
+.settings-dropdown a{
+display: block;
+padding: 13px 18px;
+text-decoration: none;
+color: #333;
+}
+
+.settings-dropdown a:hover
+
+.settings-dropdown.show{
+display: block;
+}
+/* =========================
+TOP HEADER ICONS
+========================= */
+
+.header{
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.top-icons{
+display: flex;
+align-items: center;
+gap: 15px;
+}
+
+.icon-btn{
+text-decoration: none;
+font-size: 24px;
+cursor: pointer;
+background: white;
+padding: 8px 10px;
+border-radius: 50%;
+transition: 0.3s;
+border: none;
+}
+
+.icon-btn:hover{
+transform: scale(1.1);
+}
+
+.settings-menu{
+position: relative;
+}
+
+.settings-btn{
+border: none;
+}
+
+.settings-dropdown{
+display: none;
+position: absolute;
+top: 50px;
+right: 0;
+width: 190px;
+background: white;
+border-radius: 10px;
+box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+overflow: hidden;
+z-index: 1000;
+}
+
+.settings-dropdown a{
+display: block;
+padding: 13px 18px;
+text-decoration: none;
+color: #333;
+}
+
+.settings-dropdown a:hover
+
+.settings-dropdown.show{
+display: block;
+}
+
+/* =========================
+ACCOUNT PAGE
+========================= */
+
+.account-container{
+min-height: 80vh;
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 30px;
+}
+
+.account-box{
+width: 450px;
+max-width: 100%;
+background: white;
+padding: 30px;
+border-radius: 15px;
+box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.account-box h2{
+color: brown;
+margin-bottom: 20px;
+}
+
+.account-box label{
+display: block;
+margin-top: 12px;
+margin-bottom: 5px;
+font-weight: bold;
+}
+
+.account-box input{
+width: 100%;
+padding: 12px;
+border: 1px solid #ccc;
+border-radius: 6px;
+}
+
+.account-box button{
+width: 100%;
+padding: 12px;
+margin-top: 15px;
+background: brown;
+color: white;
+border: none;
+border-radius: 6px;
+cursor: pointer;
+}
+
+.account-btn{
+margin-top: 10px !important;
+}
+
+.logout-btn{
+background: #555 !important;
+}
+
+/* =========================
+SETTINGS PAGE
+========================= */
+
+.settings-page{
+min-height: 80vh;
+padding: 40px 20px;
+}
+
+.settings-box{
+max-width: 600px;
+margin: auto;
+background: white;
+padding: 25px;
+border-radius: 15px;
+box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.settings-box h2{
+text-align: center;
+color: brown;
+margin-bottom: 25px;
+}
+
+.setting-option{
+display: flex;
+align-items: center;
+gap: 15px;
+padding: 15px;
+margin-bottom: 10px;
+border: 1px solid #eee;
+border-radius: 10px;
+cursor: pointer;
+}
+
+.setting-option:hover
+
+.setting-option > div{
+flex: 1;
+}
+
+.setting-option h3{
+margin: 0 0 5px;
+}
+
+.setting-option p{
+margin: 0;
+color: #666;
+font-size: 14px;
+}
+
+.setting-option span{
+font-size: 28px;
+}
+
+.logout-option{
+margin-top: 20px;
+}
+
+/* =========================
+MOBILE VIEW
+========================= */
+
+@media(max-width:600px){
+
+
+.header{
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.top-icons{
+    gap: 8px;
+}
+
+.search-box input{
+    width: 220px;
+}
+
+.account-container{
+    padding: 15px;
+}
+
+.account-box{
+    padding: 20px;
+}
+
+.settings-box{
+    padding: 15px;
+}
+
+
+}
+/* SETTINGS PAGE */
+
+.settings-page{
+    padding:40px;
+    display:flex;
+    justify-content:center;
+}
+
+.settings-box{
+    width:600px;
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 0 15px rgba(0,0,0,0.15);
+}
+
+.setting-option{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:15px;
+    margin:10px 0;
+    border-bottom:1px solid #ddd;
+    cursor:pointer;
+}
+
+.setting-option:hover{
+    background:#f2f2f2;
+}
+
+.setting-option div{
+    flex:1;
+}
+
+.setting-option h3{
+    margin:0;
+}
+
+.setting-option p{
+    margin:5px 0 0;
+    color:#666;
+}
+
+/* TOGGLE SWITCH */
+
+.switch{
+    position:relative;
+    width:50px;
+    height:25px;
+}
+
+.switch input{
+    display:none;
+}
+
+.slider{
+    position:absolute;
+    cursor:pointer;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background:#ccc;
+    border-radius:25px;
+}
+
+.slider:before{
+    content:"";
+    position:absolute;
+    width:19px;
+    height:19px;
+    left:3px;
+    bottom:3px;
+    background:white;
+    border-radius:50%;
+    transition:0.3s;
+}
+
+.switch input:checked + .slider{
+    background:brown;
+}
+
+.switch input:checked + .slider:before{
+    transform:translateX(25px);
+}
+
+/* DARK MODE */
+
+body.dark-mode{
+    background:#222;
+    color:white;
+}
+
+body.dark-mode .settings-box{
+    background:#333;
+    color:white;
+}
+
+body.dark-mode .setting-option{
+    border-color:#555;
+}
+
+body.dark-mode .setting-option:hover{
+    background:#444;
+}
+
+body.dark-mode .setting-option p{
+    color:#ccc;
+}
+/* HEADER */
+
+.header{
+    background: brown;
+    color: white;
+    padding: 15px 30px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1{
+    color: white;
+}
+
+
+/* TOP RIGHT ICONS */
+
+.top-icons{
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+
+/* ICON LINKS */
+
+.top-icons .icon-btn{
+    color: white !important;
+
+    text-decoration: none !important;
+
+    font-size: 28px;
+
+    background: transparent !important;
+
+    border: none;
+
+    padding: 0;
+
+    display: inline-block;
+
+    cursor: pointer;
+}
+
+
+/* HOVER */
+
+.top-icons .icon-btn:hover{
+    transform: scale(1.15);
+}
